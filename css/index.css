@@ -281,3 +281,8 @@ p, h1, h2, h3, h4, h5, h6, a, span, li {
         margin: 20px auto !important; /* Espaço em cima/baixo e centralizada */
     }
 }
+
+.email-texto {
+    word-break: break-all;
+    display: inline-block;
+}
