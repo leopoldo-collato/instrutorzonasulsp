@@ -1,136 +1,283 @@
-.hero{
-    background:
-    linear-gradient(rgba(5,26,53,.80),
-    rgba(5,26,53,.80)),
-    url('../imagens/banner-home.jpg');
-
-    background-size:cover;
-    background-position:center;
-    color:#fff;
-    padding:110px 0;
+/*/* ==========================================================================
+   1. RESET GLOBAL & PREVENÇÃO DE ESTRUTURA (Evita barra de rolagem horizontal)
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box !important;
+    margin: 0;
+    padding: 0;
 }
 
-.hero-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:50px;
-    align-items:center;
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important; /* Corta o espaço branco extra no mobile */
+    font-family: 'Exo 2', 'Arial', sans-serif;
+    background-color: #0d1117; /* Fundo escuro padrão */
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
 }
 
-.hero h1{
-    font-size:55px;
-    line-height:1.1;
-    margin-bottom:25px;
+/* Trava imagens e mídias para nunca excederem a largura da tela */
+img, video, iframe, picture {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
 }
 
-.hero span{
-    color:#FFC107;
+/* Previne que textos longos, links ou emails vazem das caixas */
+p, h1, h2, h3, h4, h5, h6, a, span, li {
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
 }
 
-.hero p{
-    font-size:22px;
-    margin-bottom:30px;
+/* ==========================================================================
+   2. ESTRUTURA DA PÁGINA (DESKTOP)
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.hero li{
-    margin-bottom:15px;
-    font-size:20px;
+/* --- Cabeçalho / Banner Principal (Hero) --- */
+.hero {
+    width: 100%;
+    padding: 60px 0;
+    background: linear-gradient(135deg, #0a0e17 0%, #161b22 100%);
 }
 
-.hero li i{
-    color:#FFC107;
-    margin-right:10px;
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
 }
 
-.hero-image img{
-    max-width:500px;
-    margin:auto;
+.hero-text {
+    flex: 1;
 }
 
-.titulo{
-    font-size:40px;
-    text-align:center;
-    margin-bottom:60px;
+.hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffcc00;
+    line-height: 1.2;
+    margin-bottom: 20px;
 }
 
-.diferenciais{
-    padding:90px 0;
-    background:#f5f7fa;
+.hero-text h1 span {
+    color: #ffffff;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
+.hero-list {
+    list-style: none;
+    margin-bottom: 30px;
 }
 
-.card{
-    background:#fff;
-    padding:40px;
-    border-radius:25px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+.hero-list li {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.sobre{
-    padding:100px 0;
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.sobre-grid{
-    display:grid;
-    grid-template-columns:400px 1fr;
-    gap:60px;
-    align-items:center;
+.hero-image img {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-.sobre img{
-    border-radius:20px;
+/* --- Botões de Ação --- */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25D366;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 16px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
 
-.servicos{
-    padding:100px 0;
-    background:#051A35;
+.btn-whatsapp:hover {
+    background-color: #1ebd56;
+    transform: translateY(-2px);
 }
 
-.servicos .titulo{
-    color:#fff;
+/* --- Seções Adicionais (Chamada de Impacto / Destaques) --- */
+.secao-destaque {
+    background-color: #ffcc00;
+    color: #000000;
+    padding: 50px 0;
+    text-align: center;
 }
 
-.servicos-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
+.secao-destaque h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
 }
 
-.servico{
-    background:#0c2d59;
-    color:#fff;
-    padding:35px;
-    border-radius:20px;
-    text-align:center;
+.secao-destaque p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
 }
 
-.cta{
-    background:#FFC107;
-    padding:100px 0;
-    text-align:center;
+/* --- Seção de Contato --- */
+.contato-secao {
+    padding: 60px 0;
+    background-color: #161b22;
+    text-align: center;
 }
 
-.cta h2{
-    font-size:45px;
-    margin-bottom:20px;
+.contato-container {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.cta p{
-    margin-bottom:35px;
-    font-size:22px;
+/* ==========================================================================
+   3. CORREÇÃO RESPONSIVA PARA CELULARES E TABLETS (Telas até 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    /* Força o container principal a não ter margens negativas no celular */
+    .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    /* Empilha o bloco do texto e da imagem do carro na vertical */
+    .hero-container {
+        flex-direction: column !important;
+        gap: 30px !important;
+        text-align: center;
+    }
+
+    /* Faz os containers ocuparem 100% da largura da tela */
+    .hero-text, 
+    .hero-image {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+    }
+
+    /* Reduz o tamanho do título para caber sem espremer o layout */
+    .hero-text h1 {
+        font-size: 1.75rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Ajusta o alinhamento da lista de tópicos no celular */
+    .hero-list {
+        text-align: left;
+        display: inline-block;
+        margin: 0 auto 25px auto;
+    }
+
+    .hero-list li {
+        font-size: 0.95rem !important;
+    }
+
+    /* Redimensiona os títulos das seções secundárias */
+    .secao-destaque h2 {
+        font-size: 1.6rem !important;
+    }
+
+    .secao-destaque p {
+        font-size: 1rem !important;
+    }
+
+    /* Expande os botões para largura total para facilitar o toque no celular */
+    .btn-whatsapp {
+        width: 100% !important;
+        padding: 14px 20px !important;
+        font-size: 1rem !important;
+    }
+
+    /* Garante que a foto do carro fique perfeitamente centralizada e ajustada */
+    .hero-image img {
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 auto;
+    }
 }
 
-.btn{
-    display:inline-block;
-    background:#25D366;
-    color:#fff;
-    padding:18px 35px;
-    border-radius:50px;
-    font-weight:700;
+/* Ajustes finos adicionais para telas muito pequenas (até 380px) */
+@media (max-width: 380px) {
+    .hero-text h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .hero-list li {
+        font-size: 0.88rem !important;
+    }
+}
+
+/* ==========================================================================
+   CORREÇÃO DE EMERGÊNCIA - FORÇAR ENCAIXE NA TELA (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Força o corpo da página a NUNCA ter rolagem lateral */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        position: relative;
+    }
+
+    /* 2. Localiza o container que segura a foto e o texto e força o empilhamento */
+    /* Eu usei classes genéricas comuns. Se você souber a classe exata (ex: .hero, .banner), substitua aqui. */
+    .hero, 
+    .container, 
+    .flex-container, 
+    #banner, 
+    main > section {
+        display: flex !important;
+        flex-direction: column !important; /* Texto em cima, Foto embaixo */
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* 3. Força as colunas de texto e imagem a ocuparem 100% da largura */
+    .hero-text, 
+    .hero-image, 
+    .col, 
+    .col-6, 
+    .col-md-6,
+    div[class*="col-"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 4. A CORREÇÃO DA FOTO: Força a imagem a obedecer o container */
+    .hero-image img, 
+    img[src*="carro.png"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 20px auto !important; /* Espaço em cima/baixo e centralizada */
+    }
 }

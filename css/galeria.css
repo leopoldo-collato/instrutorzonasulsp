@@ -1,291 +1,231 @@
-/* =====================================================
-   GALERIA.CSS - Instrutor Zona Sul SP
-===================================================== */
+/* ==========================================================================
+   Reset e Trava Anti-Vazamento Geral
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box !important;
+}
 
-/* HERO DA GALERIA */
-.hero-galeria {
-    background: linear-gradient(rgba(5,26,53,.85), rgba(5,26,53,.85)),
-                url("../imagens/banner-home.jpg") center/cover no-repeat;
-    color: #fff;
-    padding: 90px 0;
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+}
+
+img, video {
+    max-width: 100% !important;
+    height: auto;
+}
+
+/* ==========================================================================
+   Containers e Títulos da Seção
+   ========================================================================== */
+.section-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.section-title {
     text-align: center;
-}
-
-.hero-galeria h1 {
-    font-size: 52px;
-    font-weight: 800;
-    margin-bottom: 15px;
-}
-
-.hero-galeria h1 span {
-    color: #FFC107;
-}
-
-.hero-galeria p {
-    font-size: 20px;
-    max-width: 700px;
-    margin: 0 auto;
-    opacity: .95;
-}
-
-/* CONFIGURAÇÃO DA SEÇÃO */
-.secao-galeria {
-    padding: 70px 0;
-}
-
-.secao-galeria h2.titulo {
-    color: #051A35;
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 1.8rem;
     margin-bottom: 10px;
+    color: #2c3e50;
 }
 
-.secao-galeria h2.titulo i {
-    color: #FFC107;
-    margin-right: 8px;
-}
-
-.secao-galeria p.subtitulo {
-    color: #666;
-    font-size: 18px;
-    margin-bottom: 40px;
-}
-
-/* =====================================================
-   ESTRUTURA DA GALERIA DE FOTOS (CARDS MENORES)
-===================================================== */
-.grid-galeria {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-}
-
-.item-galeria {
-    background: #fff;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 12px 35px rgba(0,0,0,.08);
-    transition: .35s;
-    cursor: pointer;
-    position: relative;
-}
-
-.item-galeria:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 45px rgba(0,0,0,.15);
-}
-
-/* Mantém a imagem em tamanho menor e uniforme */
-.item-galeria img {
-    width: 100%;
-    height: 220px; 
-    object-fit: cover; /* Corta a imagem proporcionalmente sem distorcer */
-    display: block;
-    transition: .6s;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-}
-
-.item-galeria:hover img {
-    transform: scale(1.08);
-}
-
-.legenda {
-    padding: 18px;
+.section-subtitle {
     text-align: center;
-    color: #051A35;
-    font-size: 16px;
-    font-weight: 600;
-    background: #fff;
+    color: #7f8c8d;
+    margin-bottom: 30px;
 }
 
-/* Sombra sutil de fundo no hover do card */
-.item-galeria::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.15), transparent);
-    opacity: 0;
-    transition: .4s;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.item-galeria:hover::before {
-    opacity: 1;
-}
-
-/* =====================================================
-   ESTRUTURA DE VÍDEOS MP4 (TAMANHO ORIGINAL E LADO A LADO)
-===================================================== */
-.grid-videos-original {
-    display: flex;
-    flex-direction: row; /* Força os vídeos a ficarem alinhados em linha */
-    flex-wrap: nowrap;   /* Proíbe os vídeos de pularem para a linha de baixo */
-    gap: 20px;           /* Espaçamento sutil entre os cards */
-    justify-content: space-between; /* Distribui os elementos igualmente */
-    margin-top: 20px;
+/* ==========================================================================
+   Grid de Fotos e Padronização Absoluta dos Cartões
+   ========================================================================== */
+.grid-fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    align-items: stretch; /* Alinha a altura final de todos os cards */
+    margin-bottom: 50px;
     width: 100%;
 }
 
-.item-video-original {
-    background: #fff;
-    border-radius: 18px;
+.foto-item {
+    background: #ffffff;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 12px 35px rgba(0,0,0,.08);
-    transition: .35s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    
+    /* Layout Flexbox em Coluna para forçar altura uniforme */
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+.foto-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Trava rígida para que NENHUMA imagem ultrapasse ou estique o container */
+.foto-item img {
+    width: 100% !important;
+    height: 220px !important;       /* Trava a altura padrão */
+    max-height: 220px !important;   /* Anula sobressinais de outros CSS */
+    min-height: 220px !important;
+    object-fit: cover !important;   /* Recorta proporcionalmente sem esticar */
+    object-position: center !important;
+    display: block !important;
+    flex-shrink: 0 !important;      /* Impede que o container comprima/estique a foto */
+}
+
+/* Área da Legenda */
+.foto-caption {
+    padding: 15px 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #34495e;
+    word-wrap: break-word;
+    
+    /* Preenche o restante do cartão mantendo o texto centralizado */
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   Container de Vídeos
+   ========================================================================== */
+.container-videos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.video-item {
+    flex: 1 1 280px;
+    max-width: 380px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;             /* Faz com que dividam o espaço disponível igualmente */
-    max-width: 320px;    /* Garante que respeitem o limite do tamanho original */
+    justify-content: space-between;
 }
 
-.item-video-original:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 40px rgba(0,0,0,.12);
-}
-
-/* O player exibe o tamanho real sem cortes laterais e sem efeito de zoom */
-.item-video-original video {
-    display: block;
+.video-item video {
     width: 100%;
     height: auto;
-    object-fit: contain; /* Mostra a imagem de capa e o vídeo inteiros */
-    background: #051A35;
+    border-radius: 6px;
+    display: block;
 }
 
-.titulo-video {
-    padding: 15px;
-    text-align: center;
-    color: #051A35;
-    font-size: 15px;
-    font-weight: 600;
-    width: 100%;
-    background: #fff;
-}
-
-/* =====================================================
-   ANIMAÇÃO DE ENTRADA SUAVE (SCROLL)
-===================================================== */
-@keyframes subir {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-.item-galeria, .item-video-original {
-    animation: subir .8s ease;
-}
-
-/* =====================================================
-   LIGHTBOX (EFEITO ZOOM AO CLICAR NA FOTO)
-===================================================== */
-.lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.92);
+/* Trava de controles visuais nos navegadores */
+video::-internal-media-controls-download-button {
     display: none;
+}
+video::-webkit-media-controls-enclosure {
+    overflow: hidden;
+}
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px);
+}
+
+.video-caption {
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    color: #34495e;
+    word-wrap: break-word;
+}
+
+/* ==========================================================================
+   Lightbox Modal
+   ========================================================================== */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
     justify-content: center;
     align-items: center;
-    z-index: 99999;
-    animation: fadeLight .35s;
+    padding: 15px;
 }
 
 .lightbox img {
-    max-width: 92%;
-    max-height: 85vh;
-    border-radius: 15px;
-    box-shadow: 0 15px 50px rgba(0,0,0,.5);
-    animation: zoomLight .35s;
+    max-width: 95% !important;
+    max-height: 85% !important;
+    height: auto !important;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    object-fit: contain !important;
 }
 
-.fechar {
+.lightbox-close {
     position: absolute;
-    top: 25px;
-    right: 40px;
-    color: #fff;
-    font-size: 45px;
+    top: 15px;
+    right: 25px;
+    color: #ffffff;
+    font-size: 2.5rem;
     cursor: pointer;
-    transition: .3s;
+    font-weight: bold;
 }
 
-.fechar:hover {
-    color: #FFC107;
-    transform: rotate(90deg);
-}
-
-@keyframes fadeLight {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes zoomLight {
-    from { transform: scale(.75); }
-    to { transform: scale(1); }
-}
-
-/* Scroll suave ao linkar âncoras */
-.secao-galeria {
-    scroll-margin-top: 110px;
-}
-
-/* =====================================================
-   RESPONSIVIDADE (MOBILE & TABLET)
-===================================================== */
+/* ==========================================================================
+   Ajustes Responsivos Mobile
+   ========================================================================== */
 @media (max-width: 768px) {
-    .hero-galeria {
-        padding: 70px 0;
-    }
-    
-    .hero-galeria h1 {
-        font-size: 34px;
+    .section-container {
+        padding: 0 15px;
+        margin: 25px auto;
     }
 
-    .secao-galeria h2.titulo {
-        font-size: 28px;
+    .section-title {
+        font-size: 1.5rem;
     }
 
-    .grid-galeria {
+    .grid-fotos {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 15px;
     }
 
-    /* No mobile ele permite quebrar as linhas para os players não ficarem esmagados */
-    .grid-videos-original {
-        flex-wrap: wrap; 
-        justify-content: center;
-        gap: 20px;
+    .video-item {
+        flex: 1 1 100%;
+        max-width: 100%;
     }
 
-    .item-video-original {
-        flex: none;
-        width: 100%;
-        max-width: 320px;
+    .hero-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center;
     }
 
-    .fechar {
-        top: 15px;
-        right: 20px;
-        font-size: 38px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-galeria h1 {
-        font-size: 28px;
-    }
-    
-    .hero-galeria p {
-        font-size: 16px;
+    .hero-image {
+        width: 100% !important;
+        margin-top: 20px;
     }
 
-    .item-galeria img {
-        height: 200px;
+    .hero-image img {
+        margin: 0 auto;
     }
 }
