@@ -326,7 +326,7 @@ footer h3{
     margin-bottom:20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 600px) 
     /* Correção para e-mails e textos longos não vazarem em telas menores */
 footer p, 
 footer a {
